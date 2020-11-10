@@ -1,0 +1,19 @@
+<a href="#"  id="linka"><div id ="renda"></div></a>
+<script>
+var link = "https://arunsyoga.in/wp-json/wp/v2/posts?orderby=rand&per_page=1"
+function getData() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var obj = JSON.parse(this.response);
+       console.log(obj[0].guid.rendered);
+       console.log(obj[0].title);
+       document.getElementById("renda").innerHTML = obj[0].title.rendered;
+      document.getElementById("linka").href= obj[0].guid.rendered;
+    }
+  };
+  xhttp.open("GET", link, true);
+  xhttp.send();
+}
+getData();
+</script>
